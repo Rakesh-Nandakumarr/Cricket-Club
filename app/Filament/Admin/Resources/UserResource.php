@@ -37,9 +37,6 @@ class UserResource extends Resource
                     ->preload()
                     ->multiple()
                     ->required(),
-                Forms\Components\TextInput::make('password')
-                    ->label('Password')
-                    ->required(),
             ]),
             ]);
     }
