@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Membership;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -38,6 +39,15 @@ class DatabaseSeeder extends Seeder
 
         // call the TeamSeeder
         $this->call(TeamSeeder::class);
+
+        // call the StaticPagesSeeder
+        $this->call(StaticPagesSeeder::class);
+
+        //create 50 members using the MembershipFactory
+        \App\Models\Membership::factory(50)->create();
+
+        //create 50 players using the PlayerFactory
+        \App\Models\Player::factory(50)->create();
 
 
     }

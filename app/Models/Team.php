@@ -13,5 +13,11 @@ class Team extends Model
     {
         return $this->belongsTo(Sport::class);
     }
+
+    public function players()
+    {
+        return $this->hasMany(Player::class);
+    }
+    
     use HasFactory;
 }

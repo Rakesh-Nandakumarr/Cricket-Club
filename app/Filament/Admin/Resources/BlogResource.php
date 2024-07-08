@@ -12,6 +12,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
+use Filament\Forms\Set;
+use Closure;
 
 class BlogResource extends Resource
 {
@@ -19,45 +22,64 @@ class BlogResource extends Resource
 
     protected static ?string $navigationGroup = 'Content';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    //use a more suitable icon
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+
+
+
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\Card::make()
-                ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->label('Title')
-                    ->required(),
-                Forms\Components\TextInput::make('slug')
-                    ->label('Slug')
-                    ->required(),
-                Forms\Components\RichEditor::make('content')
-                    ->label('Content')
-                    ->required(),
-                Forms\Components\Toggle::make('is_published')
-                    ->label('Is Published'),
-                Forms\Components\DateTimePicker::make('publish_at')
-                    ->label('Publish At'),
-                Forms\Components\TextInput::make('keywords')
-                    ->label('Keywords'),
-            ])->columnSpan(8),
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->label('Title')
+                            ->required()
+                            ->live()
+                            ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
+                                $set('slug', Str::slug($state));
+                            }),
+                        Forms\Components\TextInput::make('slug')
+                            ->label('slug')
+                            ->required(),
+                        Forms\Components\RichEditor::make('content')
+                            ->label('Content')
+                            ->required(),
+                        Forms\Components\Toggle::make('is_published')
+                            ->label('Is Published'),
+                        Forms\Components\DateTimePicker::make('publish_at')
+                            ->label('Publish At'),
+                        Forms\Components\TextInput::make('keywords')
+                            ->label('Keywords'),
+                    ])->columnSpan(8),
 
-            Forms\Components\Card::make()
-                ->schema([
-                    Forms\Components\FileUpload::make('teaser_image')
-                        ->label('Teaser Image'),
-                    Forms\Components\FileUpload::make('banner_image')
-                        ->label('Banner Image'),
-                ])->columnSpan(4),
-            ]);
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\FileUpload::make('teaser_image')
+                            ->label('Teaser Image')
+                            ->image()
+                            ->directory('photos')
+                            ->disk('public')
+                            ->imageEditor(),
+                        Forms\Components\FileUpload::make('banner_image')
+                            ->label('Banner Image')
+                            ->image()
+                            ->directory('photos')
+                            ->disk('public')
+                            ->imageEditor(),
+                    ])->columnSpan(4),
+            ])->columns(12);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('teaser_image')
+                    ->label('Teaser Image'),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title')
                     ->searchable()
@@ -66,9 +88,9 @@ class BlogResource extends Resource
                     ->label('Slug')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\ToggleColumn::make('is_published')
+                Tables\Columns\IconColumn::make('is_published')
                     ->label('Is Published')
-                    ->searchable()
+                    ->boolean()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('publish_at')
                     ->label('Publish At')
@@ -78,6 +100,7 @@ class BlogResource extends Resource
                     ->label('Keywords')
                     ->searchable()
                     ->sortable(),
+                    
             ])
             ->filters([
                 //

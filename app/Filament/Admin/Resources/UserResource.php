@@ -16,7 +16,7 @@ class UserResource extends Resource
 
     protected static ?string $navigationGroup = 'Human Resources';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     public static function form(Forms\Form $form): Forms\Form
     {
@@ -29,6 +29,7 @@ class UserResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('email')
                     ->label('Email')
+                    ->email()
                     ->required()
                     ->email(),
                 Forms\Components\Select::make('roles')
