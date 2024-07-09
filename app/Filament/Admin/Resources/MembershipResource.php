@@ -16,7 +16,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Datepicker;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
 
 
@@ -60,7 +60,7 @@ class MembershipResource extends Resource
                         ->label('Is Active'),
                     Toggle::make('is_membership_paid')
                         ->label('Is Membership Paid'),
-                    Datepicker::make('membership_paid_date')
+                    DatePicker::make('membership_paid_date')
                         ->label('Membership Paid Date')
                         ->nullable(),
                 ]),
