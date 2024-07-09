@@ -10,9 +10,21 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Builder;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\TextColumn;
+
+
+
+
+//import only the classes that are used
+
 
 
 class StaticPageResource extends Resource
@@ -29,9 +41,9 @@ class StaticPageResource extends Resource
         return $form
             ->schema([
                 //use a card to group the fields
-                Forms\Components\Section::make()
+                Section::make()
                     ->schema([                
-                Forms\Components\TextInput::make('title')
+                TextInput::make('title')
                     ->required()
                     ->required()
                     ->live()
@@ -39,17 +51,17 @@ class StaticPageResource extends Resource
                         $set('slug', Str::slug($state));
                     })
                     ->unique(StaticPage::class, 'title', ignoreRecord: true),
-                Forms\Components\TextInput::make('slug')
+                TextInput::make('slug')
                     ->required()
                     ->unique(StaticPage::class, 'slug', ignoreRecord: true),
-                Forms\Components\Builder::make('content')
+                Builder::make('content')
                     ->blocks([
-                        Forms\Components\Builder\Block::make('heading')
+                        Builder\Block::make('heading')
                             ->schema([
-                                Forms\Components\TextInput::make('content')
+                                TextInput::make('content')
                                     ->label('Heading')
                                     ->required(),
-                                Forms\Components\Select::make('level')
+                                Select::make('level')
                                     ->options([
                                         'h1' => 'Heading 1',
                                         'h2' => 'Heading 2',
@@ -61,19 +73,19 @@ class StaticPageResource extends Resource
                                     ->required(),
                             ])
                             ->columns(2),
-                        Forms\Components\Builder\Block::make('paragraph')
+                        Builder\Block::make('paragraph')
                             ->schema([
-                                Forms\Components\Textarea::make('content')
+                                Textarea::make('content')
                                     ->label('Paragraph')
                                     ->required(),
                             ]),
-                        Forms\Components\Builder\Block::make('image')
+                        Builder\Block::make('image')
                             ->schema([
-                                Forms\Components\FileUpload::make('url')
+                                FileUpload::make('url')
                                     ->label('Image')
                                     ->image()
                                     ->required(),
-                                Forms\Components\TextInput::make('alt')
+                                TextInput::make('alt')
                                     ->label('Alt text')
                                     ->required(),
                             ]),
@@ -88,11 +100,11 @@ class StaticPageResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
-                Tables\Columns\TextColumn::make('title')->limit(50),
-                Tables\Columns\TextColumn::make('slug')->limit(50),
-                Tables\Columns\TextColumn::make('created_at')->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')->dateTime(),
+                TextColumn::make('id'),
+                TextColumn::make('title')->limit(50),
+                TextColumn::make('slug')->limit(50),
+                TextColumn::make('created_at')->dateTime(),
+                TextColumn::make('updated_at')->dateTime(),
             ])
             ->filters([
                 //

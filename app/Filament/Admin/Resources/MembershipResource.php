@@ -12,6 +12,15 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Datepicker;
+use Filament\Forms\Components\Section;
+
+
+
 
 class MembershipResource extends Resource
 {
@@ -25,33 +34,33 @@ class MembershipResource extends Resource
     {
         return $form
             ->schema([
-            Forms\Components\Section::make()
+            Section::make()
                 ->schema([
-                    Forms\Components\TextInput::make('first_name')
+                    TextInput::make('first_name')
                         ->label('First Name')
                         ->required(),
-                    Forms\Components\TextInput::make('last_name')
+                    TextInput::make('last_name')
                         ->label('Last Name')
                         ->required(),
-                    Forms\Components\TextInput::make('phone_number')
+                    TextInput::make('phone_number')
                         ->label('Phone Number')
                         ->numeric()
                         ->required(),
-                    Forms\Components\TextInput::make('mailing_address')
+                    TextInput::make('mailing_address')
                         ->label('Mailing Address')
                         ->required(),
-                    Forms\Components\TextInput::make('postal_code')
+                    TextInput::make('postal_code')
                         ->label('Postal Code')
                         ->required(),
-                    Forms\Components\TextInput::make('email')
+                    TextInput::make('email')
                         ->label('Email')
                         ->email()
                         ->required(),
-                    Forms\Components\Toggle::make('is_active')
+                    Toggle::make('is_active')
                         ->label('Is Active'),
-                    Forms\Components\Toggle::make('is_membership_paid')
+                    Toggle::make('is_membership_paid')
                         ->label('Is Membership Paid'),
-                    Forms\Components\Datepicker::make('membership_paid_date')
+                    Datepicker::make('membership_paid_date')
                         ->label('Membership Paid Date')
                         ->nullable(),
                 ]),
@@ -62,39 +71,39 @@ class MembershipResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('first_name')
+                TextColumn::make('first_name')
                     ->label('First Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('last_name')
+                TextColumn::make('last_name')
                     ->label('Last Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('phone_number')
+                TextColumn::make('phone_number')
                     ->label('Phone Number')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('mailing_address')
+                TextColumn::make('mailing_address')
                     ->label('Mailing Address')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('postal_code')
+                TextColumn::make('postal_code')
                     ->label('Postal Code')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('email')
+                TextColumn::make('email')
                     ->label('Email')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('is_active')
+                IconColumn::make('is_active')
                     ->label('Is Active')
                     ->boolean()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('is_membership_paid')
+                IconColumn::make('is_membership_paid')
                     ->label('Is Membership Paid')
                     ->boolean()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('membership_paid_date')
+                TextColumn::make('membership_paid_date')
                     ->label('Membership Paid Date')
                     ->searchable()
                     ->sortable(),

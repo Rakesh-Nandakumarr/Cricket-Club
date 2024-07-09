@@ -12,6 +12,11 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Section;
+
 
 class ContactResource extends Resource
 {
@@ -25,21 +30,21 @@ class ContactResource extends Resource
     {
         return $form
             ->schema([
-            Forms\Components\Section::make()
+            Section::make()
                 ->schema([
-                    Forms\Components\TextInput::make('first_name')
+                    TextInput::make('first_name')
                         ->label('First Name')
                         ->required(),
-                    Forms\Components\TextInput::make('last_name')
+                    TextInput::make('last_name')
                         ->label('Last Name')
                         ->required(),
-                    Forms\Components\TextInput::make('email')
+                    TextInput::make('email')
                         ->label('Email')
                         ->email()
                         ->required(),
-                    Forms\Components\TextInput::make('phone_number')
+                    TextInput::make('phone_number')
                         ->label('Phone Number'),
-                    Forms\Components\Textarea::make('message')
+                    Textarea::make('message')
                         ->label('Message')
                         ->required(),
                 ]),
@@ -50,28 +55,28 @@ class ContactResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('first_name')
+                TextColumn::make('first_name')
                     ->label('First Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('last_name')
+                TextColumn::make('last_name')
                     ->label('Last Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('email')
+                TextColumn::make('email')
                     ->label('Email')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('phone_number')
+                TextColumn::make('phone_number')
                     ->label('Phone Number')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('message')
+                TextColumn::make('message')
                     ->label('Message')
                     ->searchable()
                     ->sortable(),
                 //add created_at 
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->label('Created At')
                     ->searchable()
                     ->sortable(),

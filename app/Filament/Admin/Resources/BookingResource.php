@@ -12,6 +12,16 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Datepicker;
+use Filament\Forms\Components\Radio;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Timepicker;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Section;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
+
 
 class BookingResource extends Resource
 {
@@ -25,39 +35,39 @@ class BookingResource extends Resource
     {
         return $form
             ->schema([
-            Forms\Components\Section::make()
+            Section::make()
                 ->heading('Applicant Details')
                 ->schema([
-                    Forms\Components\TextInput::make('name')
+                    TextInput::make('name')
                         ->label('Name')
                         ->required(),
-                    Forms\Components\Toggle::make('current_member')
+                    Toggle::make('current_member')
                         ->label('Current Member')
                         ->required(),
-                    Forms\Components\TextInput::make('address')
+                    TextInput::make('address')
                         ->label('Address')
                         ->required(),
-                    Forms\Components\TextInput::make('phone')
+                    TextInput::make('phone')
                         ->label('Phone')
                         ->required(),
-                    Forms\Components\TextInput::make('email')
+                    TextInput::make('email')
                         ->label('Email')
                         ->email()
                         ->required(),
                 ])->columnSpan(1),
-                Forms\Components\Section::make()
+                Section::make()
                     ->heading('Booking Details')
                     ->schema([
-                    Forms\Components\Datepicker::make('booking_date')
+                    Datepicker::make('booking_date')
                         ->label('Booking Date')
                         ->required(),
-                    Forms\Components\Timepicker::make('start_time')
+                    Timepicker::make('start_time')
                         ->label('Start Time')
                         ->required(),
-                    Forms\Components\Timepicker::make('finish_time')
+                    Timepicker::make('finish_time')
                         ->label('Finish Time')
                         ->required(),
-                    Forms\Components\Radio::make('function_type')
+                    Radio::make('function_type')
                         ->label('Type of function')
                         ->options([
                             'Private-member' => 'Private member',
@@ -65,7 +75,7 @@ class BookingResource extends Resource
                             'Sponsored' => 'Sponsored',
                         ])
                         ->required(),
-                    Forms\Components\Textarea::make('function_nature')
+                    Textarea::make('function_nature')
                         ->label('Function Nature')
                         ->required(),
                 ])->columnSpan(1),
@@ -77,28 +87,28 @@ class BookingResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->label('Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('current_member')
+                IconColumn::make('current_member')
                     ->label('Current Member')
                     ->boolean()
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('booking_date')
+                TextColumn::make('booking_date')
                     ->label('Booking Date')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('start_time')
+                TextColumn::make('start_time')
                     ->label('Start Time')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('finish_time')
+                TextColumn::make('finish_time')
                     ->label('Finish Time')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('function_type')
+                TextColumn::make('function_type')
                     ->label('Type of function')
                     ->searchable()
                     ->sortable(),

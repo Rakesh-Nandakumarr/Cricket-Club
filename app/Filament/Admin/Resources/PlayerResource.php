@@ -12,6 +12,12 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Section;
 
 
 class PlayerResource extends Resource
@@ -26,36 +32,36 @@ class PlayerResource extends Resource
     {
         return $form
             ->schema([
-            Forms\Components\Section::make()
+            Section::make()
                 ->schema([
                     
-                    Forms\Components\TextInput::make('first_name')
+                    TextInput::make('first_name')
                         ->label('First Name')
                         ->required(),
-                    Forms\Components\TextInput::make('last_name')
+                    TextInput::make('last_name')
                         ->label('Last Name')
                         ->required(),
-                    Forms\Components\TextInput::make('jersey_number')
+                    TextInput::make('jersey_number')
                         ->label('Jersey Number')
                         ->required(),
-                    Forms\Components\Select::make('team_id')
+                    Select::make('team_id')
                         ->label('Team')
                         ->relationship('team', 'name')
                         ->preload()
                         ->required(),
-                    Forms\Components\TextInput::make('photo')
+                    TextInput::make('photo')
                         ->label('Photo')
                         ->nullable(),
-                    Forms\Components\TextInput::make('player_role')
+                    TextInput::make('player_role')
                         ->label('Player Role')
                         ->required(),
-                    Forms\Components\TextInput::make('batting_style')
+                    TextInput::make('batting_style')
                         ->label('Batting Style')
                         ->nullable(),
-                    Forms\Components\TextInput::make('bowling_style')
+                    TextInput::make('bowling_style')
                         ->label('Bowling Style')
                         ->nullable(),
-                    Forms\Components\Toggle::make('is_active')
+                    Toggle::make('is_active')
                         ->label('Is Active'),
                 ]),
             ]);
@@ -65,30 +71,30 @@ class PlayerResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('first_name')
+                TextColumn::make('first_name')
                     ->label('First Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('last_name')
+                TextColumn::make('last_name')
                     ->label('Last Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('jersey_number')
+                TextColumn::make('jersey_number')
                     ->label('Jersey Number')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('team')
+                TextColumn::make('team')
                     ->label('Team')
                     ->getStateUsing(function ($record) {
                         return $record->team->name;
                     })
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('player_role')
+                TextColumn::make('player_role')
                     ->label('Player Role')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\BooleanColumn::make('is_active')
+                IconColumn::make('is_active')
                     ->label('Is Active')
                     ->sortable(),
             ])

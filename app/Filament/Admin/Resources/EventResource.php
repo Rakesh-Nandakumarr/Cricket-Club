@@ -12,6 +12,13 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Section;
+
+
 
 class EventResource extends Resource
 {
@@ -25,24 +32,24 @@ class EventResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make()
+                Section::make()
                 ->schema([
-                Forms\Components\TextInput::make('title')
+                TextInput::make('title')
                     ->label('title')
                     ->required(),
-                Forms\Components\TextInput::make('slug')
+                TextInput::make('slug')
                     ->label('Slug')
                     ->required(),
-                Forms\Components\RichEditor::make('description')
+                RichEditor::make('description')
                     ->label('Description')
                     ->required(),
-                Forms\Components\DateTimePicker::make('start_date')
+                DateTimePicker::make('start_date')
                     ->label('Start Date')
                     ->required(),
-                Forms\Components\DateTimePicker::make('end_date')
+                DateTimePicker::make('end_date')
                     ->label('End Date')
                     ->required(),
-                Forms\Components\TextInput::make('keywords')
+                TextInput::make('keywords')
                     ->label('Keywords'),                    
 
             ]),
@@ -53,27 +60,27 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')
+                TextColumn::make('title')
                     ->label('title')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('slug')
+                TextColumn::make('slug')
                     ->label('Slug')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('description')
+                TextColumn::make('description')
                     ->label('Description')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('start_date')
+                TextColumn::make('start_date')
                     ->label('Start Date')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('end_date')
+                TextColumn::make('end_date')
                     ->label('End Date')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('keywords')
+                TextColumn::make('keywords')
                     ->label('Keywords')
                     ->searchable()
                     ->sortable(),

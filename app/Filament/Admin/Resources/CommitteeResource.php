@@ -12,6 +12,11 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Section;
 
 class CommitteeResource extends Resource
 {
@@ -26,21 +31,21 @@ class CommitteeResource extends Resource
         return $form
             ->schema([
 
-            Forms\Components\Section::make()
+            Section::make()
                 ->schema([
-                    Forms\Components\TextInput::make('name')
+                    TextInput::make('name')
                         ->label('Name')
                         ->required(),
-                    Forms\Components\TextInput::make('email')
+                    TextInput::make('email')
                         ->label('Email')
                         ->required(),
-                    Forms\Components\TextInput::make('year')
+                    TextInput::make('year')
                         ->label('Year')
                         ->required(),
-                    Forms\Components\TextInput::make('position')
+                    TextInput::make('position')
                         ->label('Position')
                         ->required(),
-                    Forms\Components\Toggle::make('is_active')
+                    Toggle::make('is_active')
                         ->label('Is Active'),
                     
                 ]),
@@ -51,23 +56,23 @@ class CommitteeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('year')
+                TextColumn::make('year')
                     ->label('Year')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('position')
+                TextColumn::make('position')
                     ->label('Position')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->label('Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('email')
+                TextColumn::make('email')
                     ->label('Email')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('is_active')
+                IconColumn::make('is_active')
                     ->label('Is Active')
                     ->boolean()
                     ->sortable(),

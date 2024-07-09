@@ -12,6 +12,14 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+
+
+
 
 class TeamResource extends Resource
 {
@@ -26,18 +34,18 @@ class TeamResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make()
+                Section::make()
                 ->schema([
-                Forms\Components\TextInput::make('name')
+                TextInput::make('name')
                     ->label('Name')
                     ->required(),
-                Forms\Components\TextInput::make('slug')
+                TextInput::make('slug')
                     ->label('Slug')
                     ->required(),
-                Forms\Components\RichEditor::make('description')
+                RichEditor::make('description')
                     ->label('Description')
                     ->required(),
-                Forms\Components\Select::make('sport_id')
+                Select::make('sport_id')
                     ->label('Sport')
                     ->relationship('sport', 'name')
                     ->preload()
@@ -50,19 +58,19 @@ class TeamResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->label('Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('slug')
+                TextColumn::make('slug')
                     ->label('Slug')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('description')
+                TextColumn::make('description')
                     ->label('Description')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('sport')
+                TextColumn::make('sport')
                     ->label('Sport')
                     ->getStateUsing(function ($record) {
                         return $record->sport->name;

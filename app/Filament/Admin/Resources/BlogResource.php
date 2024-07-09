@@ -15,6 +15,16 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use Filament\Forms\Set;
 use Closure;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
+
 
 class BlogResource extends Resource
 {
@@ -26,45 +36,42 @@ class BlogResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
 
-
-
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Section::make()
+                Section::make()
                     ->schema([
-                        Forms\Components\TextInput::make('title')
+                        TextInput::make('title')
                             ->label('Title')
                             ->required()
                             ->live()
                             ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
                                 $set('slug', Str::slug($state));
                             }),
-                        Forms\Components\TextInput::make('slug')
+                        TextInput::make('slug')
                             ->label('slug')
                             ->required(),
-                        Forms\Components\RichEditor::make('content')
+                        RichEditor::make('content')
                             ->label('Content')
                             ->required(),
-                        Forms\Components\Toggle::make('is_published')
+                        Toggle::make('is_published')
                             ->label('Is Published'),
-                        Forms\Components\DateTimePicker::make('publish_at')
+                        DateTimePicker::make('publish_at')
                             ->label('Publish At'),
-                        Forms\Components\TextInput::make('keywords')
+                        TextInput::make('keywords')
                             ->label('Keywords'),
                     ])->columnSpan(8),
 
-                Forms\Components\Section::make()
+                Section::make()
                     ->schema([
-                        Forms\Components\FileUpload::make('teaser_image')
+                        FileUpload::make('teaser_image')
                             ->label('Teaser Image')
                             ->image()
                             ->directory('photos')
                             ->disk('public')
                             ->imageEditor(),
-                        Forms\Components\FileUpload::make('banner_image')
+                        FileUpload::make('banner_image')
                             ->label('Banner Image')
                             ->image()
                             ->directory('photos')
@@ -78,25 +85,25 @@ class BlogResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('teaser_image')
+                ImageColumn::make('teaser_image')
                     ->label('Teaser Image'),
-                Tables\Columns\TextColumn::make('title')
+                TextColumn::make('title')
                     ->label('Title')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('slug')
+                TextColumn::make('slug')
                     ->label('Slug')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('is_published')
+                IconColumn::make('is_published')
                     ->label('Is Published')
                     ->boolean()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('publish_at')
+                TextColumn::make('publish_at')
                     ->label('Publish At')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('keywords') 
+                TextColumn::make('keywords') 
                     ->label('Keywords')
                     ->searchable()
                     ->sortable(),
