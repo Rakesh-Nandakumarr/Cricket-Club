@@ -86,11 +86,13 @@ class MembershipResource extends Resource
                     ->label('Email')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\BooleanColumn::make('is_active')
+                Tables\Columns\IconColumn::make('is_active')
                     ->label('Is Active')
+                    ->boolean()
                     ->sortable(),
-                Tables\Columns\BooleanColumn::make('is_membership_paid')
+                Tables\Columns\IconColumn::make('is_membership_paid')
                     ->label('Is Membership Paid')
+                    ->boolean()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('membership_paid_date')
                     ->label('Membership Paid Date')
