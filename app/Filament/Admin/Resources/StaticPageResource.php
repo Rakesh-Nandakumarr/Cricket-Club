@@ -29,7 +29,7 @@ class StaticPageResource extends Resource
         return $form
             ->schema([
                 //use a card to group the fields
-                Forms\Components\Card::make()
+                Forms\Components\Section::make()
                     ->schema([                
                 Forms\Components\TextInput::make('title')
                     ->required()

@@ -33,7 +33,7 @@ class BlogResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Card::make()
+                Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->label('Title')
@@ -56,7 +56,7 @@ class BlogResource extends Resource
                             ->label('Keywords'),
                     ])->columnSpan(8),
 
-                Forms\Components\Card::make()
+                Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\FileUpload::make('teaser_image')
                             ->label('Teaser Image')

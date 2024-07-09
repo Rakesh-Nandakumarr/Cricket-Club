@@ -2,9 +2,9 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\PlayerResource\Pages;
-use App\Filament\Admin\Resources\PlayerResource\RelationManagers;
-use App\Models\Player;
+use App\Filament\Admin\Resources\ContactResource\Pages;
+use App\Filament\Admin\Resources\ContactResource\RelationManagers;
+use App\Models\Contact;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,14 +13,13 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-
-class PlayerResource extends Resource
+class ContactResource extends Resource
 {
-    protected static ?string $model = Player::class;
+    protected static ?string $model = Contact::class;
 
     protected static ?string $navigationGroup = 'Sports';
 
-    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationIcon = 'heroicon-o-phone';
 
     public static function form(Form $form): Form
     {
@@ -28,35 +27,21 @@ class PlayerResource extends Resource
             ->schema([
             Forms\Components\Section::make()
                 ->schema([
-                    
                     Forms\Components\TextInput::make('first_name')
                         ->label('First Name')
                         ->required(),
                     Forms\Components\TextInput::make('last_name')
                         ->label('Last Name')
                         ->required(),
-                    Forms\Components\TextInput::make('jersey_number')
-                        ->label('Jersey Number')
+                    Forms\Components\TextInput::make('email')
+                        ->label('Email')
+                        ->email()
                         ->required(),
-                    Forms\Components\Select::make('team_id')
-                        ->label('Team')
-                        ->relationship('team', 'name')
-                        ->preload()
+                    Forms\Components\TextInput::make('phone_number')
+                        ->label('Phone Number'),
+                    Forms\Components\Textarea::make('message')
+                        ->label('Message')
                         ->required(),
-                    Forms\Components\TextInput::make('photo')
-                        ->label('Photo')
-                        ->nullable(),
-                    Forms\Components\TextInput::make('player_role')
-                        ->label('Player Role')
-                        ->required(),
-                    Forms\Components\TextInput::make('batting_style')
-                        ->label('Batting Style')
-                        ->nullable(),
-                    Forms\Components\TextInput::make('bowling_style')
-                        ->label('Bowling Style')
-                        ->nullable(),
-                    Forms\Components\Toggle::make('is_active')
-                        ->label('Is Active'),
                 ]),
             ]);
     }
@@ -73,23 +58,22 @@ class PlayerResource extends Resource
                     ->label('Last Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('jersey_number')
-                    ->label('Jersey Number')
+                Tables\Columns\TextColumn::make('email')
+                    ->label('Email')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('team')
-                    ->label('Team')
-                    ->getStateUsing(function ($record) {
-                        return $record->team->name;
-                    })
+                Tables\Columns\TextColumn::make('phone_number')
+                    ->label('Phone Number')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('player_role')
-                    ->label('Player Role')
+                Tables\Columns\TextColumn::make('message')
+                    ->label('Message')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\BooleanColumn::make('is_active')
-                    ->label('Is Active')
+                //add created_at 
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->searchable()
                     ->sortable(),
             ])
             ->filters([
@@ -97,7 +81,6 @@ class PlayerResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -116,9 +99,9 @@ class PlayerResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPlayers::route('/'),
-            'create' => Pages\CreatePlayer::route('/create'),
-            'edit' => Pages\EditPlayer::route('/{record}/edit'),
+            'index' => Pages\ListContacts::route('/'),
+            'create' => Pages\CreateContact::route('/create'),
+            'edit' => Pages\EditContact::route('/{record}/edit'),
         ];
     }
 }

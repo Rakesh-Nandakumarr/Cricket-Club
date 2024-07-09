@@ -49,6 +49,16 @@ class DatabaseSeeder extends Seeder
         //create 50 players using the PlayerFactory
         \App\Models\Player::factory(50)->create();
 
+        //create 50 bookings using the BookingFactory
+        \App\Models\Booking::factory(50)->create();
+
+        // //create 50 committees using the CommitteeFactory
+        // \App\Models\Committee::factory(50)->create();
+
+        //create 50 contacts using the ContactFactory
+        \App\Models\Contact::factory(50)->create();
+
+
 
     }
 }

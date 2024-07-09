@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FileUpload extends Model
+class Committee extends Model
 {
 
-    protected $fillable = ['file_name', 'file_path', 'is_active' ,'document_type'];
+    protected $fillable = ['year', 'position', 'name', 'email', 'is_active'];
+
     use HasFactory;
 }
