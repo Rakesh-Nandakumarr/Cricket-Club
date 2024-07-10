@@ -16,8 +16,17 @@
 
         <!-- Styles -->
         @livewireStyles
+
+        <style>
+            body {
+                font-family: 'Times New Roman', sans-serif;
+            }
+        </style>
     </head>
-    <body class="font-sans antialiased">
+
+
+
+    <body>
         <x-banner />
 
         <div class="min-h-screen bg-gray-100">
