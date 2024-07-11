@@ -14,13 +14,17 @@ Route::get('/documents', [DocumentController::class, 'Documents'])->name('docume
 Route::get('/membership', [MembershipController::class, 'Memberships'])->name('membership');
 Route::get('/sports', [SportController::class, 'Sports'])->name('sports');
 Route::get('/contacts', [ContactController::class, 'Contacts'])->name('contacts');
+Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+    ])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+    });
+
+
+Route::get('/blog/{blog}', [HomeController::class, 'show'])->name('blog');

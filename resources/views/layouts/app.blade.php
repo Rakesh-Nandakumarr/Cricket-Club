@@ -19,7 +19,7 @@
 
         <style>
             body {
-                font-family: 'Times New Roman', sans-serif;
+                font-family: 'Helvetica Neue Bold', sans-serif;
             }
         </style>
     </head>
