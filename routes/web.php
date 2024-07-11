@@ -8,15 +8,12 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\ContactController;
 
-
 Route::get('/', [HomeController::class, 'Home'])->name('home');
-Route::get('/Event', [EventController::class, 'Events'])->name('Events');
-Route::get('/Document', [DocumentController::class, 'Documents'])->name('Documents');
-Route::get('/Membership', [MembershipController::class, 'Memberships'])->name('Memberships');
-Route::get('/Sports', [SportController::class, 'Sports'])->name('Sports');
-Route::get('/Contacts', [ContactController::class, 'Contacts'])->name('Contacts');
-
-
+Route::get('/events', [EventController::class, 'Events'])->name('events');
+Route::get('/documents', [DocumentController::class, 'Documents'])->name('documents');
+Route::get('/membership', [MembershipController::class, 'Memberships'])->name('membership');
+Route::get('/sports', [SportController::class, 'Sports'])->name('sports');
+Route::get('/contacts', [ContactController::class, 'Contacts'])->name('contacts');
 
 Route::middleware([
     'auth:sanctum',

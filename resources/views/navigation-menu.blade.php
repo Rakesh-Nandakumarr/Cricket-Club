@@ -4,62 +4,43 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <header>
-                    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-black text-xl text-bold">
-                        Ceylon Sports Club
-                    </div>
-                </header>
+                <img src="{{asset('images\new_logo_white.svg')}}" style="filter: invert(100%);" alt="Logo">
+            </div>
+        <div class="flex">
+            <div class="flex gap-5">
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                {{ __('Home') }}
+            </x-nav-link>
+        </div>
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+            <x-nav-link :href="route('events')" :active="request()->routeIs('events')">
+                {{ __('Events') }}
+            </x-nav-link>
+        </div>
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+            <x-nav-link :href="route('documents')" :active="request()->routeIs('documents')">
+                {{ __('Documents') }}
+            </x-nav-link>
+        </div>
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+            <x-nav-link :href="route('membership')" :active="request()->routeIs('membership')">
+                {{ __('Membership') }}
+            </x-nav-link>
+        </div>
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+            <x-nav-link :href="route('sports')" :active="request()->routeIs('sports')">
+                {{ __('Sports') }}
+            </x-nav-link>
+        </div>
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+            <x-nav-link :href="route('contacts')" :active="request()->routeIs('contacts')">
+                {{ __('Contact Us') }}
+            </x-nav-link>
+        </div>
             </div>
 
-            <!-- Navigation Links -->
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                    {{ __('Home') }}
-                </x-nav-link>
-            </div>
-            <!-- Navigation Links -->
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('events')" :active="request()->routeIs('events')">
-                    {{ __('Events') }}
-                </x-nav-link>
-            </div>
 
-            <!-- Navigation Links -->
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('documents')" :active="request()->routeIs('documents')">
-                    {{ __('Documents') }}
-                </x-nav-link>
-            </div>
-
-            <!-- Navigation Links -->
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('membership')" :active="request()->routeIs('membership')">
-                    {{ __('Membership') }}
-                </x-nav-link>
-            </div>
-
-            <!-- Navigation Links -->
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('sports')" :active="request()->routeIs('sports')">
-                    {{ __('Sports') }}
-                </x-nav-link>
-            </div>
-
-            <!-- Navigation Links -->
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('aboutus')" :active="request()->routeIs('aboutus')">
-                    {{ __('About Us') }}
-                </x-nav-link>
-            </div>
-
-            <!-- Navigation Links -->
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('contactus')" :active="request()->routeIs('contactus')">
-                    {{ __('Contact Us') }}
-                </x-nav-link>
-            </div>
-
-            
             @if(Auth::check())
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -265,6 +246,7 @@
                 <a href="{{ route('register') }}" class="text-gray-500 hover:text-gray-900">Register</a>
             </div>
             @endif
+        </div>
 
         </div>
     </div>
