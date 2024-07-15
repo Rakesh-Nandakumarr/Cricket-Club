@@ -12,6 +12,13 @@ class AppLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.app');
+        // get all the static pages names
+        $pages = \App\Models\StaticPage::all('title', 'slug');
+
+        // get all the sports names
+        $sports = \App\Models\Sport::all('name', 'slug');
+
+
+        return view('layouts.app' , compact('pages', 'sports'));
     }
 }

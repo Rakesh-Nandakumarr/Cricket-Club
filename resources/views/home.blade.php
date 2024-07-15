@@ -8,7 +8,7 @@
                 <p class="mt-4 text-sm font-bold text-gray-800 md:text-base">Welcome to our community. Welcome to your second home.</p>
                 <div class="flex justify-center lg:justify-start mt-6">
                     <a class="px-4 py-3 bg-gray-900 text-gray-200 text-xs font-semibold rounded hover:bg-gray-800" href="#">Get Started</a>
-                    <a class="mx-4 px-4 py-3 bg-gray-300 text-gray-900 text-xs font-semibold rounded hover:bg-gray-400" href="#">Learn More</a>
+                    <a class="mx-4 px-4 py-3 bg-gray-300 text-gray-900 text-xs font-semibold rounded hover:bg-gray-400" href="/about-us">Learn More</a>
                 </div>
             </div>
         </div>
@@ -31,10 +31,7 @@
                             <p class="leading-relaxed mb-3">{{substr($blog->content, 0, 100)}}</p>
                             <div class="flex items
                             -center flex-wrap ">
-                            make the read more button a submit to the blog page
-                            <form method="GET" action="{{ route('blog', $blog) }}">
-                                <button type="submit" class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:scale-105 drop-shadow-md shadow-lg px-4 py-1 rounded-lg text-white">Read more</button>
-                            </form>
+                                <a href="{{ route('blog', $blog) }}"  class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:scale-105 drop-shadow-md shadow-lg px-4 py-1 rounded-lg text-white">Read more</a>
                             </div>
                         </div>
                     </div>

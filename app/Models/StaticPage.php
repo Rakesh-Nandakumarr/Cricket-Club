@@ -9,7 +9,7 @@ class StaticPage extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'content'];
+    protected $fillable = ['title', 'slug', 'content', 'is_active'];
 
     protected $casts = [
         'content' => 'array',

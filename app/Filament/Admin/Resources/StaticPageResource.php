@@ -19,11 +19,8 @@ use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
-
-
-
-
-//import only the classes that are used
+use Filament\Tables\Columns\IconColumn;
+use Filament\Forms\Components\Toggle;
 
 
 
@@ -54,6 +51,8 @@ class StaticPageResource extends Resource
                 TextInput::make('slug')
                     ->required()
                     ->unique(StaticPage::class, 'slug', ignoreRecord: true),
+                Toggle::make('is_active')
+                    ->required(),
                 Builder::make('content')
                     ->blocks([
                         Builder\Block::make('heading')
@@ -103,6 +102,9 @@ class StaticPageResource extends Resource
                 TextColumn::make('id'),
                 TextColumn::make('title')->limit(50),
                 TextColumn::make('slug')->limit(50),
+                IconColumn::make('is_active')
+                    ->boolean()
+                    ->label('Is Active'),
                 TextColumn::make('created_at')->dateTime(),
                 TextColumn::make('updated_at')->dateTime(),
             ])

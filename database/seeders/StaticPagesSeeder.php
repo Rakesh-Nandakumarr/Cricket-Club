@@ -13,6 +13,7 @@ class StaticPagesSeeder extends Seeder
         StaticPage::create([
             'title' => 'About Us',
             'slug' => 'about-us',
+            'is_active' => true,
             'content' => [
                 [
                     'type' => 'heading',
@@ -34,6 +35,7 @@ class StaticPagesSeeder extends Seeder
         StaticPage::create([
             'title' => 'Terms & Conditions',
             'slug' => 'terms-conditions',
+            'is_active' => true,
             'content' => [
                 [
                     'type' => 'heading',
@@ -55,6 +57,7 @@ class StaticPagesSeeder extends Seeder
         StaticPage::create([
             'title' => 'Policies',
             'slug' => 'policies',
+            'is_active' => true,
             'content' => [
                 [
                     'type' => 'heading',

@@ -4,7 +4,9 @@
     <div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
       <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div class="flex flex-row items-center justify-between p-4">
+          <a href="{{ route('home') }}">
           <img src="{{asset('images\new_logo_white.svg')}}" style="filter: invert(100%);" alt="Logo" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
+          </a>
           <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
             <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
               <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
@@ -13,10 +15,32 @@
           </button>
         </div>
         <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
-          <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('home') }}">Home</a>
           <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('events') }}">Events</a>
-          <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('documents') }}">Documents</a>
-          <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('membership') }}">Membership</a>
+          <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('booking') }}">Booking</a>
+          <div class="ml-3 relative">
+            <x-dropdown align="right" width="48">
+                <x-slot name="trigger">
+                    <span class="inline-flex rounded-md">
+                        <button type="button" class="inline-flex items-center px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                            Members
+
+                            <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                        </button>
+                    </span>
+                </x-slot>
+
+                <x-slot name="content">
+                        <x-dropdown-link href="{{ route('membership') }}">Membership</x-dropdown-link>
+                        <x-dropdown-link href="{{ route('documents') }}">Documents</x-dropdown-link>
+                        @foreach ($pages as $page)
+                            <x-dropdown-link href="{{ $page->slug }}">{{ $page->title }}</x-dropdown-link>
+                        @endforeach
+
+                </x-slot>
+            </x-dropdown>
+          </div>
           <div class="ml-3 relative">
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
@@ -33,29 +57,25 @@
 
                 <x-slot name="content">
                     <!-- Sports Dropdown Content -->
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                      {{ __('Cricket') }}
-                    </div>
-                    <x-dropdown-link href="{{ route('home') }}">
-                        {{ __('About Cricket') }}
-                    </x-dropdown-link>
-                    <x-dropdown-link href="{{ route('home') }}">
-                        {{ __('Cricket Team') }}
-                    </x-dropdown-link>
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                      {{ __('Football') }}
-                    </div>
-                    <x-dropdown-link href="{{ route('home') }}">
-                        {{ __('About Football') }}
-                    </x-dropdown-link>
-                    <x-dropdown-link href="{{ route('home') }}">
-                        {{ __('Football Team') }}
-                    </x-dropdown-link>
+                    @foreach ($sports as $sport)
+
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            {{ $sport->name }}
+                        </div>
+                        <x-dropdown-link href="{{ route('home') }}">
+                            {{ $sport->name.' Team' }}
+                        </x-dropdown-link>
+                        <x-dropdown-link href="{{ route('home') }}">
+                            {{ $sport->name.' Players list' }}
+                        </x-dropdown-link>
+                        
+                    @endforeach
                 </x-slot>
             </x-dropdown>
           </div>
 
           <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('contacts') }}">Contact Us</a>
+
         </nav>
       </div>
     </div>
