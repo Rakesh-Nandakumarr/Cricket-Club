@@ -14,7 +14,7 @@ Route::get('/', [HomeController::class, 'Home'])->name('home');
 Route::get('/events', [EventController::class, 'Events'])->name('events');
 Route::get('/documents', [DocumentController::class, 'Documents'])->name('documents');
 Route::get('/membership', [MembershipController::class, 'Memberships'])->name('membership');
-Route::get('/sports', [SportController::class, 'Sports'])->name('sports');
+Route::get('/sports', [SportController::class, 'Sportslist'])->name('sports');
 Route::get('/contacts', [ContactController::class, 'Contacts'])->name('contacts');
 Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
 Route::get('/bookings', [BookingController::class, 'Booking'])->name('booking');
