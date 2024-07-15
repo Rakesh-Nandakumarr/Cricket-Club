@@ -5,9 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- SEO is Must -->
-        <title>{{ is($metatitle) ?: 'Ceylon Sport Club'  }}</title>
-        <meta name="description" content="{{ is($metadescription) ?: 'Ceylon Sport Club' }}">
-        <meta name="keywords" content="{{ is($metakeywords) ?: 'Ceylon Sport Club' }}">
+        <title>{{ isset($metatitle) ? $metatitle : 'Ceylon Sport Club'  }}</title>
+        <meta name="description" content="{{ isset($metadescription) ? $metadescription : 'Ceylon Sport Club' }}">
+        <meta name="keywords" content="{{ isset($metakeywords) ? $metakeywords : 'Ceylon Sport Club' }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
