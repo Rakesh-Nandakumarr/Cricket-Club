@@ -58,6 +58,9 @@ class DatabaseSeeder extends Seeder
         //create 50 contacts using the ContactFactory
         \App\Models\Contact::factory(50)->create();
 
+        //create 50 documents using the DocumentFactory
+        \App\Models\FileUpload::factory(50)->create();
+
 
 
     }

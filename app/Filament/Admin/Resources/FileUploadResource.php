@@ -18,6 +18,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\FileUpload as FileUploadComponent;
 
 class FileUploadResource extends Resource
 {
@@ -46,7 +47,7 @@ class FileUploadResource extends Resource
                             'Miscellaneous Documents' => 'Miscellaneous Documents',
                         ])
                         ->required(),
-                    FileUpload::make('file_path')
+                    FileUploadComponent::make('file_path')
                         ->label('File Path')
                         ->openable()
                         ->directory('files')
@@ -55,6 +56,8 @@ class FileUploadResource extends Resource
                         ->required(),
                     Toggle::make('is_active')
                         ->label('Is Active'),
+                    Toggle::make('is_public')
+                        ->label('Is Public'),
                     ]),
             ]);
     }
@@ -70,6 +73,11 @@ class FileUploadResource extends Resource
                 //is_active column
                 IconColumn::make('is_active')
                     ->label('Is Active')
+                    ->boolean()
+                    ->sortable(),
+                //is_public column
+                IconColumn::make('is_public')
+                    ->label('Is Public')
                     ->boolean()
                     ->sortable(),
                 TextColumn::make('file_path')

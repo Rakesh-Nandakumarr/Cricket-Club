@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('file_name');
             $table->string('file_path');
             $table->boolean('is_active')->default(true);
+            $table->boolean('is_public')->default(true);
             $table->string('document_type');
             $table->timestamps();
         });

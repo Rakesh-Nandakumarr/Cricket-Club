@@ -16,7 +16,7 @@ class AppLayout extends Component
         $pages = \App\Models\StaticPage::all('title', 'slug');
 
         // get all the sports names
-        $sports = \App\Models\Sport::all('name', 'slug');
+        $sports = \App\Models\Sport::all();
 
 
         return view('layouts.app' , compact('pages', 'sports'));

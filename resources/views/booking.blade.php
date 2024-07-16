@@ -1,5 +1,6 @@
 <x-app-layout>
         <div class="max-w-5xl bg-white mx-auto px-20 py-10 my-5">
+            <h1 class="text-4xl font-bold text-center mb-10">Booking Slots</h1>
             <div id="calendar"></div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>

@@ -65,7 +65,7 @@
                         <x-dropdown-link href="{{ route('home') }}">
                             {{ $sport->name.' Team' }}
                         </x-dropdown-link>
-                        <x-dropdown-link href="{{ route('home') }}">
+                        <x-dropdown-link href="{{ route('SportTeam', $sport->slug) }}">
                             {{ $sport->name.' Players list' }}
                         </x-dropdown-link>
                         

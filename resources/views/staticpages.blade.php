@@ -2,7 +2,7 @@
     <div class="py-12 bg-gray-50 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-2xl rounded-lg">
-                <div class="p-6 sm:px-20 bg-white border-b border-gray-300">
+                <div class="p-6 sm:px-20 border-b border-gray-300">
                     @foreach ($page->content as $block)
                         @if ($block['type'] === 'heading')
                             <h{{ $block['data']['level'] }} class="font-bold text-gray-800 mt-4 mb-2 text-{{ $block['data']['level'] === 1 ? '3xl' : ($block['data']['level'] === 2 ? '2xl' : 'xl') }}">

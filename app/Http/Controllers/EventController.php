@@ -17,6 +17,11 @@ class EventController extends Controller
                                 ->where('end_date', '>=', $now)
                                 ->get();
         $previousEvents = Event::where('end_date', '<', $now)->get();
-        return view('events' , compact('upcomingEvents', 'ongoingEvents', 'previousEvents'));
+
+        // pass the next upcoming event from today
+        $nextEvent = Event::where('start_date', '>', $now)
+                            ->orderBy('start_date', 'asc')
+                            ->first();
+        return view('events' , compact('upcomingEvents', 'ongoingEvents', 'previousEvents', 'nextEvent'));
     }
 }

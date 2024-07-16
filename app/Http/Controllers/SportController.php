@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sport;
 use Illuminate\Http\Request;
 
 class SportController extends Controller
 {
-    public function SportsList()
+    public function SportsTeam($slug)
     {
-        
-        return view('sports');
-    }
+        //get the sport
+        $sport = Sport::where('slug', $slug)->firstOrFail();
+
+        //get the players of the sport
+        $players = $sport->players;
+        return view('sport-teams', compact('sport', 'players'));
+    }   
 
         public function Sports()
     {

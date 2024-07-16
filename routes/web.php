@@ -30,5 +30,7 @@ Route::middleware([
     });
 
 
-Route::get('/blog/{blog}', [HomeController::class, 'show'])->name('blog');
+Route::get('/blog/{slug}', [HomeController::class, 'show'])->name('blog');
 Route::get('/{slug}', [StaticPageController::class, 'show'])->name('static-page');
+// sport team
+Route::get('/{slug}', [SportController::class, 'SportsTeam'])->name('SportTeam');
