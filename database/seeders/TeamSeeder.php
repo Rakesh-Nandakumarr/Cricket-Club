@@ -12,27 +12,23 @@ class TeamSeeder extends Seeder
      */
     public function run(): void
     {
-        // for cricket, create teams with name, slug, and description
+        // for canadian cricket, create teams with name, slug, and description
         $teams = [
-                    ['name' => 'Ireland', 'slug' => 'ireland', 'description' => 'Known for their spirited performances in international cricket.'],
-                    ['name' => 'Scotland', 'slug' => 'scotland', 'description' => 'A team with a rich history in the ICC Intercontinental Cup.'],
-                    ['name' => 'Netherlands', 'slug' => 'netherlands', 'description' => 'Famous for upsetting major teams in World Cup tournaments.'],
-                    ['name' => 'UAE', 'slug' => 'uae', 'description' => 'A competitive side in the Asia Cup and ICC World Twenty20.'],
-                    ['name' => 'Nepal', 'slug' => 'nepal', 'description' => 'Rising stars in the cricket world with a passionate fanbase.'],
-                    ['name' => 'Oman', 'slug' => 'oman', 'description' => 'Known for their rapid rise in international cricket.'],
-                    ['name' => 'Hong Kong', 'slug' => 'hong-kong', 'description' => 'A team that has shown promise in the Asia Cup.'],
-                    ['name' => 'Canada', 'slug' => 'canada', 'description' => 'Participated in multiple Cricket World Cups with memorable performances.'],
-                    ['name' => 'Namibia', 'slug' => 'namibia', 'description' => 'A strong contender in the ICC World Cricket League.'],
-                    ['name' => 'Kenya', 'slug' => 'kenya', 'description' => 'Reached the semi-finals in the 2003 Cricket World Cup.'],
-                    ['name' => 'Uganda', 'slug' => 'uganda', 'description' => 'An emerging cricketing nation with potential.'],
-                    ['name' => 'Bermuda', 'slug' => 'bermuda', 'description' => 'Known for their appearance in the 2007 Cricket World Cup.'],
-                    ['name' => 'USA', 'slug' => 'usa', 'description' => 'A historic cricket nation experiencing a resurgence.'],
-                    ['name' => 'PNG', 'slug' => 'png', 'description' => 'Papua New Guinea has a strong presence in the ICC Intercontinental Cup.'],
-                    ['name' => 'Jersey', 'slug' => 'jersey', 'description' => 'Competes in ICC World Cricket League and European Cricket Championship.'],
-                    ['name' => 'Italy', 'slug' => 'italy', 'description' => 'Known for competing in the European Cricket Championship.'],
-                    ['name' => 'Germany', 'slug' => 'germany', 'description' => 'A growing cricket team in Europe with a diverse squad.'],
-                    ['name' => 'Denmark', 'slug' => 'denmark', 'description' => 'Has a long history in cricket, competing since the 19th century.'],
-                    ['name' => 'Norway', 'slug' => 'norway', 'description' => 'An emerging team in European cricket with a focus on development.'],
+            [
+                'name' => 'Toronto Cricket Club',
+                'slug' => 'toronto-cricket-club',
+                'description' => "Toronto Cricket Club, founded in 1827, is one of Canada's oldest cricket clubs, located in the heart of Toronto, Ontario. The club's inception marked the beginning of a rich history in Canadian cricket, fostering a deep-rooted culture of the sport within the community.\n\nThe club boasts state-of-the-art facilities, including multiple cricket pitches suitable for all levels of play, a modern clubhouse with versatile event spaces, and a dedicated training area for juniors. These facilities not only cater to the needs of the players but also serve as a central hub for cricket enthusiasts in the region.\n\nBeyond its physical attributes, Toronto Cricket Club is committed to the development of cricket talent, with a strong emphasis on junior programs that nurture young players. The club has produced numerous players who have gone on to represent Canada at international levels. Additionally, its active participation in community outreach and hosting of annual events underscores its role in bringing together cricket fans and fostering a sense of community.",
+            ],
+            [
+                'name' => 'Vancouver Cricket Club',
+                'slug' => 'vancouver-cricket-club',
+                'description' => "Established in 1890, Vancouver Cricket Club is a beacon of cricket culture in Vancouver, British Columbia. As one of the pioneering cricket institutions in Canada, the club has played a pivotal role in introducing and nurturing the sport in the western part of the country.\n\nThe club's facilities are among the finest, featuring well-maintained pitches and a contemporary clubhouse that acts as a gathering place for cricket-related activities. These facilities support the club's mission to provide an inclusive environment that encourages participation from individuals of all ages.\n\nVancouver Cricket Club's vibrant community program is a testament to its commitment to making cricket accessible and enjoyable for everyone. The club's history is rich with achievements, including hosting significant cricket events that have contributed to its legacy. Through annual celebrations of its history and contributions, the club continues to cement its place in the heart of Canada's cricket community.",
+            ],
+            [
+                'name' => 'Montreal Cricket Club',
+                'slug' => 'montreal-cricket-club',
+                'description' => "Montreal Cricket Club, with its roots stretching back to 1872, stands as a monument to cricket's longstanding tradition in Montreal, Quebec. Recognized as one of Canada's oldest cricket clubs, it has been instrumental in promoting the sport across Quebec, fostering a vibrant cricket culture.\n\nThe club is renowned for its comprehensive facilities, which include several cricket pitches and a clubhouse that serves as a central point for cricket events in the region. These facilities are designed to support the club's dedication to cricket development, especially among young and emerging cricketers.\n\nMontreal Cricket Club's illustrious history is highlighted by its numerous achievements and its role in hosting prestigious national and international cricket events. Its commitment to developing young talent and its extensive training programs underscore the club's pivotal role in the Canadian cricket community. Through its efforts, the club continues to be a cornerstone of cricket in Canada, nurturing the sport's growth and ensuring its future.",
+            ],
         ];
 
 

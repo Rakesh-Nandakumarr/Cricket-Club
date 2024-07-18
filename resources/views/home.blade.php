@@ -7,7 +7,7 @@
                 <p class="mt-4 text-sm text-gray-500 md:text-base">Join us at Ceylon Sports Club, where passion meets play, friendships flourish, and every member is part of our ever-growing sports family. Whether you're aiming to compete at a high level, stay active, or simply enjoy the camaraderie of team sports, Ceylon Sports Club is your destination.</p>
                 <p class="mt-4 text-sm font-bold text-gray-800 md:text-base">Welcome to our community. Welcome to your second home.</p>
                 <div class="flex justify-center lg:justify-start mt-6">
-                    <a class="px-4 py-3 bg-gray-900 text-gray-200 text-xs font-semibold rounded hover:bg-gray-800" href="#">Get Started</a>
+                    <a class="px-4 py-3 bg-gray-900 text-gray-200 text-xs font-semibold rounded hover:bg-gray-800" href="/membership">Get Started</a>
                     <a class="mx-4 px-4 py-3 bg-gray-300 text-gray-900 text-xs font-semibold rounded hover:bg-gray-400" href="/about-us">Learn More</a>
                 </div>
             </div>
