@@ -4,7 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\TeamResource\Pages;
 use App\Filament\Admin\Resources\TeamResource\RelationManagers;
-use App\Models\Team;
+use App\Models\CricketTeam;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,13 +17,13 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Illuminate\Support\Str;
 
 
 
-
-class TeamResource extends Resource
+class CricketTeamResource extends Resource
 {
-    protected static ?string $model = Team::class;
+    protected static ?string $model = CricketTeam::class;
 
     protected static ?string $navigationGroup = 'Sports';
 
@@ -38,17 +38,16 @@ class TeamResource extends Resource
                 ->schema([
                 TextInput::make('name')
                     ->label('Name')
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
+                        $set('slug', Str::slug($state));
+                    })
                     ->required(),
                 TextInput::make('slug')
                     ->label('Slug')
                     ->required(),
                 RichEditor::make('description')
                     ->label('Description')
-                    ->required(),
-                Select::make('sport_id')
-                    ->label('Sport')
-                    ->relationship('sport', 'name')
-                    ->preload()
                     ->required(),
             ]),
             ]);
@@ -68,13 +67,6 @@ class TeamResource extends Resource
                     ->sortable(),
                 TextColumn::make('description')
                     ->label('Description')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('sport')
-                    ->label('Sport')
-                    ->getStateUsing(function ($record) {
-                        return $record->sport->name;
-                    })
                     ->searchable()
                     ->sortable(),
             ])

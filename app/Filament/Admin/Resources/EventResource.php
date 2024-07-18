@@ -17,6 +17,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Section;
+use Illuminate\Support\Str;
 
 
 
@@ -36,6 +37,10 @@ class EventResource extends Resource
                 ->schema([
                 TextInput::make('title')
                     ->label('title')
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
+                                $set('slug', Str::slug($state));
+                            })
                     ->required(),
                 TextInput::make('slug')
                     ->label('Slug')

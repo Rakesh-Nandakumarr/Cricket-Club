@@ -43,7 +43,8 @@ class ContactResource extends Resource
                         ->email()
                         ->required(),
                     TextInput::make('phone_number')
-                        ->label('Phone Number'),
+                        ->label('Phone Number')
+                        ->tel(),
                     Textarea::make('message')
                         ->label('Message')
                         ->required(),

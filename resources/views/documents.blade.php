@@ -2,11 +2,8 @@
 <x-app-layout>
 <div class="max-w-5xl mx-auto mt-10 pb-5">
     <div class="container mx-auto">
-        <h1 class="text-3xl font-bold mb-6">Documents</h1>
-
-        @foreach ($documentsByType as $type => $documents)
+        <h2 class="text-2xl font-semibold mb-4">{{ $type }}</h2>
             <div class="mb-10">
-                <h2 class="text-xl font-semibold mb-4">{{ $type }}</h2>
                 @foreach ($documents as $document)
                     <div class="bg-white p-4 rounded-lg shadow-md mb-4 flex justify-between">
                         <div>
@@ -18,12 +15,7 @@
                         </a>
                     </div>
                 @endforeach
-
-                <div class="mt-4">
-                    {{ $documents->appends(request()->except($type))->links() }}
-                </div>
             </div>
-        @endforeach
     </div>
 </div>
 </x-app-layout>

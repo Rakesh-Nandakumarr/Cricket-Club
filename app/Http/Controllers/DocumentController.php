@@ -4,33 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FileUpload;
-
+use Illuminate\Support\Str;
 
 class DocumentController extends Controller
 {
-    public function documents()
+    public function documents($type)
     {
-        $documentTypes = [
-            'Objects & By-Laws',
-            'Minutes',
-            'Financial Reports',
-            'Executive Committee minutes',
-            'Miscellaneous Documents',
-        ];
-
-        $documentsByType = [];
-        foreach ($documentTypes as $type) {
-            $documents = FileUpload::where('is_active', 1)
+        //get the documents by type
+        $documents = FileUpload::where('document_type', $type)
+                ->where('is_active', 1)
                 ->where('is_public', 1)
                 ->where('document_type', $type)
-                ->orderBy('created_at', 'desc')
-                ->paginate(5); 
-            // check if the document type has any documents
-            if ($documents->count() > 0) {
-                $documentsByType[$type] = $documents;
-            }
-        }
+                ->orderBy('created_at', 'desc')->get();
 
-        return view('documents', compact('documentsByType'));
+                // making the type a slug
+                $slug = Str::slug($type);
+
+        return view('documents', compact('documents' , 'type', 'slug'));
     }
 }

@@ -6,6 +6,7 @@ use App\Filament\Admin\Resources\PlayerResource\Pages;
 use App\Filament\Admin\Resources\PlayerResource\RelationManagers;
 use App\Models\Player;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -19,7 +20,6 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 
-
 class PlayerResource extends Resource
 {
     protected static ?string $model = Player::class;
@@ -32,39 +32,41 @@ class PlayerResource extends Resource
     {
         return $form
             ->schema([
-            Section::make()
-                ->schema([
-                    
-                    TextInput::make('first_name')
-                        ->label('First Name')
-                        ->required(),
-                    TextInput::make('last_name')
-                        ->label('Last Name')
-                        ->required(),
-                    TextInput::make('jersey_number')
-                        ->label('Jersey Number')
-                        ->required(),
-                    Select::make('team_id')
-                        ->label('Team')
-                        ->relationship('team', 'name')
-                        ->preload()
-                        ->required(),
-                    TextInput::make('photo')
-                        ->label('Photo')
-                        ->nullable(),
-                    TextInput::make('player_role')
-                        ->label('Player Role')
-                        ->required(),
-                    TextInput::make('batting_style')
-                        ->label('Batting Style')
-                        ->nullable(),
-                    TextInput::make('bowling_style')
-                        ->label('Bowling Style')
-                        ->nullable(),
-                    Toggle::make('is_active')
-                        ->label('Is Active'),
-                ]),
-            ]);
+                Section::make()
+                    ->schema([
+                        TextInput::make('first_name')
+                            ->label('First Name')
+                            ->required(),
+                        TextInput::make('last_name')
+                            ->label('Last Name')
+                            ->required(),
+                        TextInput::make('jersey_number')
+                            ->label('Jersey Number')
+                            ->required(),
+                        Select::make('team_id')
+                            ->label('Team')
+                            ->relationship('team', 'name')
+                            ->preload()
+                            ->required(),
+                        TextInput::make('player_role')
+                            ->label('Player Role')
+                            ->required(),
+                        TextInput::make('batting_style')
+                            ->label('Batting Style')
+                            ->nullable(),
+                        TextInput::make('bowling_style')
+                            ->label('Bowling Style')
+                            ->nullable(),
+                        Toggle::make('is_active')
+                            ->label('Is Active'),
+                    ])->columnSpan(2),
+                Section::make()
+                    ->schema([
+                        FileUpload::make('photo')
+                            ->label('Photo')
+                            ->required(),
+                    ])->columnSpan(1),
+            ])->columns(3);
     }
 
     public static function table(Table $table): Table
@@ -88,7 +90,6 @@ class PlayerResource extends Resource
                     ->getStateUsing(function ($record) {
                         return $record->team->name;
                     })
-                    ->searchable()
                     ->sortable(),
                 TextColumn::make('player_role')
                     ->label('Player Role')
@@ -96,6 +97,7 @@ class PlayerResource extends Resource
                     ->sortable(),
                 IconColumn::make('is_active')
                     ->label('Is Active')
+                    ->boolean()
                     ->sortable(),
             ])
             ->filters([

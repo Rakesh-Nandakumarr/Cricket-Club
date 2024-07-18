@@ -45,7 +45,7 @@ class BlogResource extends Resource
                         TextInput::make('title')
                             ->label('Title')
                             ->required()
-                            ->live()
+                            ->live(onBlur: true)
                             ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
                                 $set('slug', Str::slug($state));
                             }),

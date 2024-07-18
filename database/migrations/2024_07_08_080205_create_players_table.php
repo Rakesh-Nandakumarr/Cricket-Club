@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('batting_style')->nullable();
             $table->string('bowling_style')->nullable();
             $table->boolean('is_active')->default(false);
-            $table->foreignId('team_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cricket_team_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

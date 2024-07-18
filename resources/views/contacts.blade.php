@@ -57,17 +57,17 @@
                         @csrf
                         <div class="flex flex-col">
                             <label for="first_name" class="hidden">First Name</label>
-                            <input type="text" name="first_name" id="first_name" placeholder="First Name" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                            <input type="text" name="first_name" id="first_name" placeholder="First Name" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none" required> 
                         </div>
 
                         <div class="flex flex-col">
                             <label for="last_name" class="hidden">Last Name</label>
-                            <input type="text" name="last_name" id="last_name" placeholder="Last Name" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                            <input type="text" name="last_name" id="last_name" placeholder="Last Name" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none" required>
                         </div>
 
                         <div class="flex flex-col mt-2">
                             <label for="email" class="hidden">Email</label>
-                            <input type="email" name="email" id="email" placeholder="Email" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                            <input type="email" name="email" id="email" placeholder="Email" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none" required>
                         </div>
 
                         <div class="flex flex-col mt-2">
@@ -77,7 +77,7 @@
 
                         <div class="flex flex-col mt-2">
                             <label for="message" class="hidden">Message</label>
-                            <textarea name="message" id="message" placeholder="Message" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"></textarea>
+                            <textarea name="message" id="message" placeholder="Message" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none" required></textarea>
                         </div>
 
                         <button type="submit" class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:scale-105 drop-shadow-md shadow-lg text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300">

@@ -42,8 +42,7 @@ class StaticPageResource extends Resource
                     ->schema([                
                 TextInput::make('title')
                     ->required()
-                    ->required()
-                    ->live()
+                    ->live(onBlur: true)
                     ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
                         $set('slug', Str::slug($state));
                     })

@@ -34,8 +34,6 @@ class DatabaseSeeder extends Seeder
         // call the EventSeeder
         $this->call(EventSeeder::class);
 
-        // call the SportSeeder
-        $this->call(SportSeeder::class);
 
         // call the TeamSeeder
         $this->call(TeamSeeder::class);
@@ -51,6 +49,7 @@ class DatabaseSeeder extends Seeder
 
         //create 50 bookings using the BookingFactory
         \App\Models\Booking::factory(50)->create();
+
 
         // //create 50 committees using the CommitteeFactory
         // \App\Models\Committee::factory(50)->create();

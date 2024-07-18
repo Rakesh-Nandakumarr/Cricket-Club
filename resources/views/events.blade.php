@@ -1,11 +1,13 @@
 <x-app-layout>  
-    // next event
     <div class="max-w-5xl mx-auto mt-10">
+        <h2 class="text-2xl font-bold">Next Event</h2>
+        <br>
         <div class="bg-white shadow-md rounded-lg p-4 mb-4">
-            <h2 class="text-2xl font-bold">Next Event</h2>
             @if($nextEvent)
                 <h3 class="text-xl font-bold">{{ $nextEvent->title }}</h3>
+                <br>
                 <p class="text-gray-600">{{ $nextEvent->description }}</p>
+                <br>
                 <p class="text-gray-500">Starts: {{ $nextEvent->start_date }}</p>
             @else
                 <p class="text-gray-600">No upcoming events.</p>
@@ -15,9 +17,9 @@
     <div class="max-w-5xl mx-auto mt-10">
         <div x-data="{ currentTab: 'upcoming' }" class="mb-8">
             <div class="flex justify-center mb-4">
-                <button :class="{ 'bg-teal-500 text-white': currentTab === 'upcoming' }" @click="currentTab = 'upcoming'" class="px-4 py-2 mr-2 bg-gray-200 rounded">Upcoming</button>
-                <button :class="{ 'bg-teal-500 text-white': currentTab === 'ongoing' }" @click="currentTab = 'ongoing'" class="px-4 py-2 mr-2 bg-gray-200 rounded">Ongoing</button>
-                <button :class="{ 'bg-teal-500 text-white': currentTab === 'previous' }" @click="currentTab = 'previous'" class="px-4 py-2 bg-gray-200 rounded">Previous</button>
+                <button :class="{ 'bg-gradient-to-r from-cyan-600 to-blue-600 hover:scale-105 transition ease-in-out duration-300 text-white': currentTab === 'upcoming' }" @click="currentTab = 'upcoming'" class="px-4 py-2 mr-2 bg-gray-200 rounded hover:scale-105 transition ease-in-out duration-300 ">Upcoming</button>
+                <button :class="{ 'bg-gradient-to-r from-cyan-600 to-blue-600 hover:scale-105 transition ease-in-out duration-300 text-white': currentTab === 'ongoing' }" @click="currentTab = 'ongoing'" class="px-4 py-2 mr-2 bg-gray-200 rounded hover:scale-105 transition ease-in-out duration-300 ">Ongoing</button>
+                <button :class="{ 'bg-gradient-to-r from-cyan-600 to-blue-600 hover:scale-105 transition ease-in-out duration-300 text-white': currentTab === 'previous' }" @click="currentTab = 'previous'" class="px-4 py-2 bg-gray-200 rounded hover:scale-105 transition ease-in-out duration-300 ">Previous</button>
             </div>
 
             <div x-show="currentTab === 'upcoming'">

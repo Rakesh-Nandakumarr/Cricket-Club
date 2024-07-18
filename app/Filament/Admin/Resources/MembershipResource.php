@@ -18,6 +18,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 
 
 
@@ -42,12 +43,29 @@ class MembershipResource extends Resource
                     TextInput::make('last_name')
                         ->label('Last Name')
                         ->required(),
+                    DatePicker::make('date_of_birth')
+                        ->label('Date of Birth')
+                        ->required(),
+                    Select::make('gender')
+                        ->label('Gender')
+                        ->options([
+                            'Male' => 'Male',
+                            'Female' => 'Female',
+                            'Other' => 'Other',
+                        ])
+                        ->required(),
                     TextInput::make('phone_number')
                         ->label('Phone Number')
-                        ->numeric()
+                        ->tel()
                         ->required(),
                     TextInput::make('mailing_address')
                         ->label('Mailing Address')
+                        ->required(),
+                    TextInput::make('city')
+                        ->label('City')
+                        ->required(),
+                    TextInput::make('province')
+                        ->label('Province')
                         ->required(),
                     TextInput::make('postal_code')
                         ->label('Postal Code')
@@ -55,14 +73,42 @@ class MembershipResource extends Resource
                     TextInput::make('email')
                         ->label('Email')
                         ->email()
+                        ->unique()
                         ->required(),
-                    Toggle::make('is_active')
-                        ->label('Is Active'),
-                    Toggle::make('is_membership_paid')
-                        ->label('Is Membership Paid'),
-                    DatePicker::make('membership_paid_date')
-                        ->label('Membership Paid Date')
-                        ->nullable(),
+                    TextInput::make('emergency_contact_name')
+                        ->label('Emergency Contact Name')
+                        ->required(),
+                    TextInput::make('emergency_contact_relationship')
+                        ->label('Emergency Contact Relationship')
+                        ->required(),
+                    TextInput::make('emergency_contact_phone')
+                        ->label('Emergency Contact Phone')
+                        ->tel()
+                        ->required(),
+                    TextInput::make('emergency_contact_email')
+                        ->label('Emergency Contact Email')
+                        ->email()
+                        ->required(),
+                    Toggle::make('agm_package')
+                        ->label('AGM Package'),
+                    Toggle::make('consent')
+                        ->label('Consent'),
+                    Select::make('volunteer_activities')
+                        ->label('Volunteer Activities')
+                        ->multiple()
+                        ->options([
+                            'Event Planning' => 'Event Planning',
+                            'Fundraising' => 'Fundraising',
+                            'Social Media Management' => 'Social Media Management',
+                            'Coaching/Training' => 'Coaching/Training',
+                            'Community Outreach' => 'Community Outreach',
+                            'other' => 'other',
+                        ]),
+                    TextInput::make('other_activity')
+                        ->label('Other Activity'),
+                    Toggle::make('agreement')
+                        ->label('Agreement')
+                        ->required(),
                 ]),
             ]);
     }

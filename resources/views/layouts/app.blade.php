@@ -9,6 +9,7 @@
         <meta name="description" content="{{ isset($metadescription) ? $metadescription : 'Ceylon Sport Club' }}">
         <meta name="keywords" content="{{ isset($metakeywords) ? $metakeywords : 'Ceylon Sport Club' }}">
 
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -16,6 +17,7 @@
         <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css" rel="stylesheet" />
+        <link rel="icon" href="{{asset('images\new_logo.svg')}}" type="image/x-icon" />
         
 
         <!-- Scripts -->
@@ -37,7 +39,7 @@
         <x-banner />
 
         <div class="min-h-screen bg-gray-100">
-            <x-navigation-menu :pages="$pages" :sports="$sports" />
+            <x-navigation-menu :pages="$pages" :teams="$teams" />
 
             <!-- Page Heading -->
             @if (isset($header))
