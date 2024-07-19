@@ -78,6 +78,7 @@ class EventResource extends Resource
                     ->sortable(),
                 TextColumn::make('description')
                     ->label('Description')
+                    ->limit(50)
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('start_date')
