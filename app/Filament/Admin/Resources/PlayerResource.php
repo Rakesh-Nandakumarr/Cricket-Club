@@ -45,7 +45,7 @@ class PlayerResource extends Resource
                             ->required(),
                         Select::make('team_id')
                             ->label('Team')
-                            ->relationship('team', 'name')
+                            ->relationship('cricket_team', 'name')
                             ->preload()
                             ->required(),
                         TextInput::make('player_role')
@@ -88,7 +88,7 @@ class PlayerResource extends Resource
                 TextColumn::make('team')
                     ->label('Team')
                     ->getStateUsing(function ($record) {
-                        return $record->team->name;
+                        return $record->cricket_team->name;
                     })
                     ->sortable(),
                 TextColumn::make('player_role')
