@@ -17,16 +17,13 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Section;
+use Filament\Tables\Columns\CheckboxColumn;
 use Illuminate\Support\Str;
-
-
 
 class EventResource extends Resource
 {
     protected static ?string $model = Event::class;
-    
     protected static ?string $navigationGroup = 'Content';
-
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
 
     public static function form(Form $form): Form
@@ -39,8 +36,8 @@ class EventResource extends Resource
                     ->label('title')
                     ->live(onBlur: true)
                     ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
-                                $set('slug', Str::slug($state));
-                            })
+                        $set('slug', Str::slug($state));
+                    })
                     ->required(),
                 TextInput::make('slug')
                     ->label('Slug')
@@ -54,13 +51,12 @@ class EventResource extends Resource
                 DateTimePicker::make('end_date')
                     ->label('End Date & Time')
                     ->required(),
-                TextInput::make('loaction')
+                TextInput::make('location')
                     ->label('Location')
                     ->required(),
                 TextInput::make('keywords')
-                    ->label('Keywords'),                    
-
-            ]),
+                    ->label('Keywords'),
+                ]),
             ]);
     }
 
@@ -69,11 +65,12 @@ class EventResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('title')
-                    ->label('title')
+                    ->label('Title')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('slug')
                     ->label('Slug')
+                    ->toggleable()
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('description')
@@ -95,6 +92,7 @@ class EventResource extends Resource
                     ->sortable(),
                 TextColumn::make('keywords')
                     ->label('Keywords')
+                    ->toggleable()
                     ->searchable()
                     ->sortable(),
             ])
