@@ -19,8 +19,9 @@ class HomeController extends Controller
     }
 
     //show function using the blog
-    public function show(Blog $blog)
+    public function show($slug)
     {
-        return view('blogsshow', compact('blog'));
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+        return view('blogs_show', compact('blog'));
     }
 }

@@ -11,10 +11,16 @@ class Event extends Model
         'title',
         'slug',
         'description',
+        'location',
         // 'thumbnail',
         'start_date',
         'end_date',
         'keywords',
+    ];
+
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
     ];
 
     use HasFactory;

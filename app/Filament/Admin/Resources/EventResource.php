@@ -49,10 +49,13 @@ class EventResource extends Resource
                     ->label('Description')
                     ->required(),
                 DateTimePicker::make('start_date')
-                    ->label('Start Date')
+                    ->label('Start Date & Time')
                     ->required(),
                 DateTimePicker::make('end_date')
-                    ->label('End Date')
+                    ->label('End Date & Time')
+                    ->required(),
+                TextInput::make('loaction')
+                    ->label('Location')
                     ->required(),
                 TextInput::make('keywords')
                     ->label('Keywords'),                    
@@ -83,6 +86,10 @@ class EventResource extends Resource
                     ->sortable(),
                 TextColumn::make('end_date')
                     ->label('End Date')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('location')
+                    ->label('Location')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('keywords')

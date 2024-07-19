@@ -24,4 +24,10 @@ class EventController extends Controller
                             ->first();
         return view('events' , compact('upcomingEvents', 'ongoingEvents', 'previousEvents', 'nextEvent'));
     }
+
+    public function show($slug)
+    {
+        $event = Event::where('slug', $slug)->firstOrFail();
+        return view('events_show', compact('event'));
+    }
 }

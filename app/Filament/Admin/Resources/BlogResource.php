@@ -67,13 +67,11 @@ class BlogResource extends Resource
                     ->schema([
                         FileUpload::make('teaser_image')
                             ->label('Teaser Image')
-                            ->image()
                             ->directory('photos')
                             ->disk('public')
                             ->imageEditor(),
                         FileUpload::make('banner_image')
                             ->label('Banner Image')
-                            ->image()
                             ->directory('photos')
                             ->disk('public')
                             ->imageEditor(),

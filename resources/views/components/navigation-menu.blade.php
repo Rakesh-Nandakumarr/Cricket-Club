@@ -37,11 +37,8 @@
                         <div class="block px-4 py-2 text-xs text-gray-400">Cricket Team</div>
                         <hr>
                         @foreach ($teams as $team)
-                            <x-dropdown-link href="{{ route('SportTeam', $team->slug) }}">
-                                {{ $team->name.' Team' }}
-                            </x-dropdown-link>
                             <x-dropdown-link href="{{ route('SportPlayerList', $team->slug) }}">
-                                {{ $team->name.' Players list' }}
+                                {{ $team->name.' Team' }}
                             </x-dropdown-link>
                             <hr>
                         @endforeach

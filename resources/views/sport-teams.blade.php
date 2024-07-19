@@ -1,6 +1,7 @@
 <x-app-layout> 
     <div class="container mx-auto px-5 py-10">
         <h1 class="text-4xl font-bold text-center mb-10 uppercase">{{$team->name }} TEAM</h1>
+        <div class="max-w-6xl mx-auto mb-10">{{$team->description }}</div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @foreach ($players as $player)
                 <div class="relative bg-white rounded-lg overflow-hidden shadow-md transform transition duration-200 hover:scale-105">

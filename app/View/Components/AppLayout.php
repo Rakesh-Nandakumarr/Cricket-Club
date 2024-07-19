@@ -17,7 +17,11 @@ class AppLayout extends Component
         // get all the sports names
         $teams = \App\Models\CricketTeam::all();
 
-        return view('layouts.app' , compact('pages', 'teams'));
+        $metatitle = null;
+        $metadescription = null;
+        $metakeywords = null;
+
+        return view('layouts.app' , compact('pages', 'teams','metatitle','metadescription','metakeywords'));
     }
 }
 

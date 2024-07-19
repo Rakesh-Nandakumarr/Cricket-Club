@@ -18,8 +18,8 @@ class BlogSeeder extends Seeder
             [
                 'title' => 'Blog 1',
                 'slug' => 'blog-1',
-                'teaser_image' => 'blog-1.jpg',
-                'banner_image' => 'blog-1-banner.jpg',
+                'teaser_image' => '/photos/blog-1.jpg',
+                'banner_image' => '/photos/blog-1-banner.jpg',
                 'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.',
                 'is_published' => true,
                 'publish_at' => now(),
@@ -28,8 +28,8 @@ class BlogSeeder extends Seeder
             [
                 'title' => 'Blog 2',
                 'slug' => 'blog-2',
-                'teaser_image' => 'blog-2.jpg',
-                'banner_image' => 'blog-2-banner.jpg',
+                'teaser_image' => '/photos/blog-2.jpg',
+                'banner_image' => '/photos/blog-2-banner.jpg',
                 'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.',
                 'is_published' => true,
                 'publish_at' => now(),
@@ -38,8 +38,8 @@ class BlogSeeder extends Seeder
             [
                 'title' => 'Blog 3',
                 'slug' => 'blog-3',
-                'teaser_image' => 'blog-3.jpg',
-                'banner_image' => 'blog-3-banner.jpg',
+                'teaser_image' => '/photos/blog-3.jpg',
+                'banner_image' => '/photos/blog-3-banner.jpg',
                 'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.',
                 'is_published' => true,
                 'publish_at' => now(),

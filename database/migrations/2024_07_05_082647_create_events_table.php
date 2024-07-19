@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
+            $table->string('location');
             $table->longText('description');
-            // $table->string('thumbnail', 255)->nullable();
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->string('keywords')->nullable();

@@ -2,8 +2,8 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\TeamResource\Pages;
-use App\Filament\Admin\Resources\TeamResource\RelationManagers;
+use App\Filament\Admin\Resources\CricketTeamResource\Pages;
+use App\Filament\Admin\Resources\CricketTeamResource\RelationManagers;
 use App\Models\CricketTeam;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -18,8 +18,6 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Illuminate\Support\Str;
-
-
 
 class CricketTeamResource extends Resource
 {
@@ -95,10 +93,9 @@ class CricketTeamResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTeams::route('/'),
-            'create' => Pages\CreateTeam::route('/create'),
-            'view' => Pages\ViewTeam::route('/{record}'),
-            'edit' => Pages\EditTeam::route('/{record}/edit'),
+            'index' => Pages\ListCricketTeams::route('/'),
+            'create' => Pages\CreateCricketTeam::route('/create'),
+            'edit' => Pages\EditCricketTeam::route('/{record}/edit'),
         ];
     }
 }

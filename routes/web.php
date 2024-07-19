@@ -14,11 +14,11 @@ Route::get('/', [HomeController::class, 'Home'])->name('home');
 Route::get('/events', [EventController::class, 'Events'])->name('events');
 Route::get('/documents/{slug}', [DocumentController::class, 'documents'])->name('documents');
 Route::get('/membership', [MembershipController::class, 'Memberships'])->name('membership');
-Route::get('/sports', [SportController::class, 'Sportslist'])->name('sports');
 Route::get('/contacts', [ContactController::class, 'Contacts'])->name('contacts');
 Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
 Route::get('/bookings', [BookingController::class, 'Booking'])->name('booking');
 Route::post('/membership', [MembershipController::class, 'store'])->name('membership.submit');
+Route::get('/test-email', [ContactController::class, 'sendTestEmail']);
 
 // Route::middleware([
     //     'auth:sanctum',
@@ -33,6 +33,6 @@ Route::post('/membership', [MembershipController::class, 'store'])->name('member
 
 
 Route::get('/{StaticPage}', [StaticPageController::class, 'show'])->name('staticpage');
-Route::get('/{slug}/Player-list', [SportController::class, 'SportsPlayerList'])->name('SportPlayerList');
-Route::get('/blog/{slug}', [HomeController::class, 'show'])->name('blog');
-Route::get('/{slug}', [SportController::class, 'SportsTeam'])->name('SportTeam');
+Route::get('/Team/{slug}', [SportController::class, 'SportsPlayerList'])->name('SportPlayerList');
+Route::get('/blogs/{slug}', [HomeController::class, 'show'])->name('blog');
+Route::get('/events/{slug}', [EventController::class, 'show'])->name('events_show');

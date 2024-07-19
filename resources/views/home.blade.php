@@ -31,7 +31,7 @@
                             <p class="leading-relaxed mb-3">{{substr($blog->content, 0, 100)}}</p>
                             <div class="flex items
                             -center flex-wrap ">
-                                <a href="{{ route('blog', $blog) }}"  class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:scale-105 drop-shadow-md shadow-lg px-4 py-1 rounded-lg text-white">Read more</a>
+                                <a href="{{ route('blog', $blog->slug) }}"  class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:scale-105 drop-shadow-md shadow-lg px-4 py-1 rounded-lg text-white transition duration-500 ease-in-out">Read more</a>
                             </div>
                         </div>
                     </div>

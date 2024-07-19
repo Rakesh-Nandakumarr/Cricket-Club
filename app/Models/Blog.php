@@ -22,6 +22,10 @@ class Blog extends Model
         return asset('storage/' . $this->banner_image);
     }
 
+    protected $casts = [
+        'publish_at' => 'datetime',
+    ];
+
 
 
 }

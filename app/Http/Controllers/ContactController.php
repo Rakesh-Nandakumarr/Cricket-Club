@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -16,7 +18,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         //validate the form
-        $request->validate([
+        $contact = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email',
@@ -25,15 +27,17 @@ class ContactController extends Controller
         ]);
 
         //store the data
-        $contact = new Contact();
-        $contact->first_name = $request->first_name;
-        $contact->last_name = $request->last_name;
-        $contact->email = $request->email;
-        $contact->phone_number = $request->phone_number;
-        $contact->message = $request->message;
-        $contact->save();
+        Contact::create($contact);
+
+        // Send the email
+        Mail::to('rakeshnandakumarr@gmail.com')->send(new ContactMail($contact));
 
         //redirect to the contacts page
         return redirect()->route('contacts')->with('success', 'Contact form submitted successfully');
+    }
+
+    public function sendTestEmail()
+    {
+
     }
 }
