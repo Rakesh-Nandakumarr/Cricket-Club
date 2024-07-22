@@ -60,6 +60,11 @@
                         @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                     </div>
 
+                    <div class="col-span-2">
+                        <label for="mailing_address" class="block text-sm font-medium text-gray-700">Mailing Address</label>
+                        <input type="text" name="mailing_address" id="mailing_address" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value="{{ old('mailing_address') }}" required>
+                        @error('mailing_address') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                    </div>
                     <div>
                         <label for="city" class="block text-sm font-medium text-gray-700">City</label>
                         <input type="text" name="city" id="city" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value="{{ old('city') }}" required>
@@ -78,11 +83,6 @@
                         @error('postal_code') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                     </div>
 
-                    <div class="col-span-2">
-                        <label for="mailing_address" class="block text-sm font-medium text-gray-700">Mailing Address</label>
-                        <input type="text" name="mailing_address" id="mailing_address" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value="{{ old('mailing_address') }}" required>
-                        @error('mailing_address') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
 
                     <div class="col-span-2">
                         <label class="block text-sm font-lg text-gray-700 font-bold">Emergency Contact Information</label>
