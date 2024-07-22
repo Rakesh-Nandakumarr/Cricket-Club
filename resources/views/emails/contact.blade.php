@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Contact Form Submission</title>
-</head>
-<body>
-    <h1>Contact Form Submission</h1>
-    <p><strong>First Name:</strong> {{ $contact['first_name'] }}</p>
-    <p><strong>Last Name:</strong> {{ $contact['last_name'] }}</p>
-    <p><strong>Email:</strong> {{ $contact['email'] }}</p>
-    <p><strong>Phone Number:</strong> {{ $contact['phone_number'] ?? 'N/A' }}</p>
-    <p><strong>Message:</strong></p>
-    <p>{{ $contact['message'] }}</p>
-</body>
-</html>
+<x-mail::message>
+# New Contact Message
+
+**First Name:** {{ $contact['first_name'] }}  
+**Last Name:** {{ $contact['last_name'] }}  
+**Email:** {{ $contact['email'] }}  
+**Phone Number:** {{ $contact['phone_number'] ?? 'N/A' }}  
+**Message:**  
+{{ $contact['message'] }}
+
+<x-mail::button :url="config('app.url') . '/admin/contact'">
+Review Applications
+</x-mail::button>
+
+Thanks,<br>
+{{ config('app.name') }}
+</x-mail::message>

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Membership;
+use App\Mail\MembershipApplicationMail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MembershipApplicationConfirmation;
+
 
 class MembershipController extends Controller
 {
@@ -33,6 +37,12 @@ class MembershipController extends Controller
         ]);
 
         $member['volunteer_activities'] = json_encode($member['volunteer_activities']);
+
+        // Send confirmation email to the company
+        Mail::to('test@webrubix.com')->send(new MembershipApplicationMail($member));
+
+        // Send confirmation email to the applicant
+        Mail::to($member['email'])->send(new MembershipApplicationConfirmation());
 
         // Store the membership application
         Membership::create($member);

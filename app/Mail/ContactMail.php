@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
@@ -12,25 +11,16 @@ class ContactMail extends Mailable
 
     public $contact;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
     public function __construct($contact)
     {
         $this->contact = $contact;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
-        return $this->from('test@webrubix.ca')
-                    ->subject('New Contact Form Submission')
-                    ->view('emails.contact');
+        return $this->from(config('mail.from.address'))
+                    ->subject('New Contact Message')
+                    ->markdown('emails.contact')
+                    ->with('contact', $this->contact);
     }
 }
